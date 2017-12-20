@@ -41,7 +41,7 @@ public class ApkDecoder extends BaseDecoder {
     private final File mOldApkDir;
     private final File mNewApkDir;
 
-    private final ManifestDecoder      manifestDecoder;
+    // private final ManifestDecoder      manifestDecoder;
     private final UniqueDexDiffDecoder dexPatchDecoder;
     private final BsDiffDecoder        soPatchDecoder;
     private final ResDiffDecoder       resPatchDecoder;
@@ -57,7 +57,7 @@ public class ApkDecoder extends BaseDecoder {
         this.mNewApkDir = config.mTempUnzipNewDir;
         this.mOldApkDir = config.mTempUnzipOldDir;
 
-        this.manifestDecoder = new ManifestDecoder(config);
+        // this.manifestDecoder = new ManifestDecoder(config);
 
         //put meta files in assets
         String prePath = TypedValue.FILE_ASSETS + File.separator;
@@ -97,7 +97,7 @@ public class ApkDecoder extends BaseDecoder {
 
     @Override
     public void onAllPatchesStart() throws IOException, TinkerPatchException {
-        manifestDecoder.onAllPatchesStart();
+        // manifestDecoder.onAllPatchesStart();
         dexPatchDecoder.onAllPatchesStart();
         soPatchDecoder.onAllPatchesStart();
         resPatchDecoder.onAllPatchesStart();
@@ -106,7 +106,7 @@ public class ApkDecoder extends BaseDecoder {
     public boolean patch(File oldFile, File newFile) throws Exception {
         writeToLogFile(oldFile, newFile);
         //check manifest change first
-        manifestDecoder.patch(oldFile, newFile);
+        // manifestDecoder.patch(oldFile, newFile);
 
         unzipApkFiles(oldFile, newFile);
 
@@ -121,7 +121,7 @@ public class ApkDecoder extends BaseDecoder {
 
         soPatchDecoder.onAllPatchesEnd();
         dexPatchDecoder.onAllPatchesEnd();
-        manifestDecoder.onAllPatchesEnd();
+        // manifestDecoder.onAllPatchesEnd();
         resPatchDecoder.onAllPatchesEnd();
 
         //clean resources

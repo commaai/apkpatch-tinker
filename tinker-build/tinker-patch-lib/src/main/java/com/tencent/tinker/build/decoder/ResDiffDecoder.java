@@ -144,10 +144,10 @@ public class ResDiffDecoder extends BaseDecoder {
             Logger.d("found modify resource: " + name + ", but it match ignore change pattern, just ignore!");
             return false;
         }
-        if (name.equals(TypedValue.RES_MANIFEST)) {
-            Logger.d("found modify resource: " + name + ", but it is AndroidManifest.xml, just ignore!");
-            return false;
-        }
+        // if (name.equals(TypedValue.RES_MANIFEST)) {
+        //     Logger.d("found modify resource: " + name + ", but it is AndroidManifest.xml, just ignore!");
+        //     return false;
+        // }
         if (name.equals(TypedValue.RES_ARSC)) {
             if (AndroidParser.resourceTableLogicalChange(config)) {
                 Logger.d("found modify resource: " + name + ", but it is logically the same as original new resources.arsc, just ignore!");
@@ -272,10 +272,10 @@ public class ResDiffDecoder extends BaseDecoder {
         deletedSet.addAll(getDeletedResource(config.mTempUnzipOldDir, config.mTempUnzipNewDir));
 
         //we can't modify AndroidManifest file
-        addedSet.remove(TypedValue.RES_MANIFEST);
-        deletedSet.remove(TypedValue.RES_MANIFEST);
-        modifiedSet.remove(TypedValue.RES_MANIFEST);
-        largeModifiedSet.remove(TypedValue.RES_MANIFEST);
+        // addedSet.remove(TypedValue.RES_MANIFEST);
+        // deletedSet.remove(TypedValue.RES_MANIFEST);
+        // modifiedSet.remove(TypedValue.RES_MANIFEST);
+        // largeModifiedSet.remove(TypedValue.RES_MANIFEST);
         //remove add, delete or modified if they are in ignore change pattern also
         removeIgnoreChangeFile(modifiedSet);
         removeIgnoreChangeFile(deletedSet);
@@ -283,7 +283,7 @@ public class ResDiffDecoder extends BaseDecoder {
         removeIgnoreChangeFile(largeModifiedSet);
 
         // last add test res in assets for user cannot ignore it;
-        addAssetsFileForTestResource();
+        // addAssetsFileForTestResource();
 
         File tempResZip = new File(config.mOutFolder + File.separator + TEMP_RES_ZIP);
         final File tempResFiles = config.mTempResultDir;
@@ -317,7 +317,7 @@ public class ResDiffDecoder extends BaseDecoder {
         String patternMeta = TypedValue.PATTERN_TITLE;
         HashSet<String> patterns = new HashSet<>(config.mResRawPattern);
         //we will process them separate
-        patterns.remove(TypedValue.RES_MANIFEST);
+        // patterns.remove(TypedValue.RES_MANIFEST);
 
         writeMetaFile(patternMeta + patterns.size());
         //write pattern

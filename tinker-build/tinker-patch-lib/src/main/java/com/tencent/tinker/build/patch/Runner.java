@@ -66,8 +66,8 @@ public class Runner {
             decoder.onAllPatchesEnd();
 
             //gen meta file and version file
-            PatchInfo info = new PatchInfo(config);
-            info.gen();
+            // PatchInfo info = new PatchInfo(config);
+            // info.gen();
 
             //build patch
             PatchBuilder builder = new PatchBuilder(config);

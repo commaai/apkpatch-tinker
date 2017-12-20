@@ -198,7 +198,7 @@ public class DexDiffDecoder extends BaseDecoder {
             generatePatchInfoFile();
         }
 
-        addTestDex();
+        // addTestDex();
     }
 
     @SuppressWarnings("NewApi")
